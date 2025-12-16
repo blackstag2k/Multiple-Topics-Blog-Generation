@@ -6,24 +6,35 @@ This project is about generating various content requirements for three topics a
 
 ```mermaid
 flowchart TD
+    A[Start Script] --> B[Import Libraries<br/>google.genai, pandas, json, time]
+    B --> C[Initialize Gemini Client<br/>with API Key]
+    C --> D[Read topics.csv using pandas]
+    D --> E[Extract first 3 topics<br/>from column 0]
 
-A[Start]
-A --> B[Init Client]
+    E --> F{For each topic}
 
-B --> C[Generate Outline]
-C --> D[Outline Result]
+    F --> G[Generate Outline]
+    G --> G1[Prompt: Blog Outline System Instruction]
+    G1 --> G2[Gemini Model<br/>gemini-2.5-flash]
+    G2 --> H[Outline Text]
 
-D --> E[Generate Draft]
-E --> F[Draft Result]
+    H --> I[Generate Blog]
+    I --> I1[Prompt: Blog Writing System Instruction]
+    I1 --> I2[Gemini Model<br/>gemini-2.5-flash]
+    I2 --> J[Final Blog Post]
 
-F --> G[Generate Critique]
-G --> H[Critique Result]
+    J --> K[Generate Critique]
+    K --> K1[Prompt: Critique System Instruction]
+    K1 --> K2[Gemini Model<br/>gemini-2.5-flash]
+    K2 --> L[Critique Report]
 
-H --> I[Create JSON Dict]
-I --> J[Save to output.json]
+    L --> M[Create Output Dictionary<br/>{topic, outline, blog, critique}]
+    M --> N[Save as JSON File<br/>topic.json]
+    N --> O[Print Confirmation Message]
+    O --> P[Sleep for 6 Seconds]
 
-J --> K[Print]
-K --> L[End]
+    P --> F
+    F -->|All topics processed| Q[End Script]
 ```
 
 ## Steps to Run the Code
@@ -61,8 +72,6 @@ python main.py
 Output JSON:
 | Topics | Outlines | Drafts | Critiques |
 |-------|--------|--------|--------|
-|-------|--------|--------|--------|
-|-------|--------|--------|--------|
 | Prompt Engineering | Detailed outline generated for the draft | A Draft of about 300 words generated from the outline | A critique analysing the draft on all the important factors and criteria for content generation |
 | AI Content Lead | Detailed outline generated for the draft | A Draft of about 300 words generated from the outline | A critique analysing the draft on all the important factors and criteria for content generation |
 | GenAI Artist | Detailed outline generated for the draft | A Draft of about 300 words generated from the outline | A critique analysing the draft on all the important factors and criteria for content generation |
@@ -79,6 +88,7 @@ Output JSON:
 - Understanding the use of *encoding = "utf-8"* in the writing stage of the json file to include the forbidden or unacceptable characters in the output and *ensure_ascii=False* during the json dumping stage of the code.
 - Executing the code through a virtual environment (.venv) like VS Code.
 - Prompt chaining to execute multiple prompts and get the best results.
+
 
 
 Documented during the Prompt Engineering Course for Prompt Chaining, Content Generation, and Python Automation.
