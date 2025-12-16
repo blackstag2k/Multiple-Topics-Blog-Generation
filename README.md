@@ -14,23 +14,23 @@ flowchart TD
     E --> F{For each topic}
 
     F --> G[Generate Outline]
-    G --> G1[Prompt: Blog Outline System Instruction]
+    G --> G1[Outline Prompt<br/>System Instruction]
     G1 --> G2[Gemini Model<br/>gemini-2.5-flash]
     G2 --> H[Outline Text]
 
     H --> I[Generate Blog]
-    I --> I1[Prompt: Blog Writing System Instruction]
+    I --> I1[Blog Writing Prompt]
     I1 --> I2[Gemini Model<br/>gemini-2.5-flash]
     I2 --> J[Final Blog Post]
 
     J --> K[Generate Critique]
-    K --> K1[Prompt: Critique System Instruction]
+    K --> K1[Critique Prompt]
     K1 --> K2[Gemini Model<br/>gemini-2.5-flash]
     K2 --> L[Critique Report]
 
-    L --> M[Create Output Dictionary<br/>{topic, outline, blog, critique}]
-    M --> N[Save as JSON File<br/>topic.json]
-    N --> O[Print Confirmation Message]
+    L --> M[Create Output Dictionary<br/>topic, outline, blog, critique]
+    M --> N[Save Output as JSON File<br/>topic.json]
+    N --> O[Print Saved Confirmation]
     O --> P[Sleep for 6 Seconds]
 
     P --> F
@@ -92,3 +92,4 @@ Output JSON:
 
 
 Documented during the Prompt Engineering Course for Prompt Chaining, Content Generation, and Python Automation.
+
