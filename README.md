@@ -41,7 +41,7 @@ flowchart TD
 
 1. Cloning the repository:
 
-git clone: https://github.com/blackstag2k/JSON-Draft-Generation.git
+git clone: https://github.com/blackstag2k/Multiple-Topics-Blog-Generation.git
 
 2. Installing the Dependencies for the project:
 
@@ -92,4 +92,5 @@ Output JSON:
 
 
 Documented during the Prompt Engineering Course for Prompt Chaining, Content Generation, and Python Automation.
+
 
